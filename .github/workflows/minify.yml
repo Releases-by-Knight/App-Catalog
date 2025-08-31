@@ -1,0 +1,24 @@
+name: Minify json
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  minify_json:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+            
+      - name: Minify index.json
+        run: |
+          jq -c . index.json > index.min.json
+
+      - uses: stefanzweifel/git-auto-commit-action@v6
+        with:
+          file_pattern: "*.json"
+          commit_message: "Bot: Minified JSON"
+          commit_user_name: Minify JSON Bot
+          
