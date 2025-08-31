@@ -15,8 +15,8 @@ jobs:
       - name: Minify-JSON
         uses: StefanEnsmann/Minify-Json-Action@1.1.0
         with:
-          input_file: data/index.json
-          output_file: data/index.min.json
+          input_file: "./data/index.json"
+          output_file: "./data/index.min.json"
 
       - uses: stefanzweifel/git-auto-commit-action@v6
         with:
